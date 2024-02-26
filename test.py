@@ -1,5 +1,6 @@
 import argparse
 import os
+import time
 
 import torch
 from torch import nn
@@ -10,6 +11,7 @@ from datasets import VITONDataset, VITONDataLoader
 from networks import SegGenerator, GMM, ALIASGenerator
 from utils import gen_noise, load_checkpoint, save_images
 
+startTime = time.time()
 
 def get_opt():
     parser = argparse.ArgumentParser()
@@ -153,3 +155,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    endTime = time.time()
+    print(f"Inference Time {endTime - startTime: .2f}") 
